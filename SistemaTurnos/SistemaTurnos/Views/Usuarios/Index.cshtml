@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SistemaTurnos.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VRut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoUsuario.TipoUsuario1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VRut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VApellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoUsuario.TipoUsuario1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdUsuario })
+        </td>
+    </tr>
+}
+
+</table>

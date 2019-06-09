@@ -1,0 +1,58 @@
+﻿@model SistemaTurnos.Models.CambioTurno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CambioTurno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VObservaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VObservaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.VDescripcionEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.VDescripcionEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurnoUsuario.IdTurnoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurnoUsuario.IdTurnoUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.VEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.VEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario1.VEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario1.VEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCambioTurno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

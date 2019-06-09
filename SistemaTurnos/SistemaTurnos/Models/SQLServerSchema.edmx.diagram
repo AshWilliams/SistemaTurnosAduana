@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f90260f2cab148628a147e982647a54f" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="TurnosAduanaModel.CalidadJuridica" Width="1.5" PointX="6" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.CambioTurno" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Contrato" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Estado" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Lugar" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Permisos" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Rol" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.TipoContrato" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.TipoPermiso" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.TipoUsuario" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Turnos" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.TurnoUsuario" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TurnosAduanaModel.Usuario" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="TurnosAduanaModel.IdCalidadJuridica_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdEstado_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdTurnoUsuario_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdUsuario_idxfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdUsuarioold_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdTipoContrato_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdUsuario_idxfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdLugar_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdTipoPermiso_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdUsuario_idxfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdRol_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdTipoUsuario_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdTurno_idxfk" ManuallyRouted="false" />
+        <AssociationConnector Association="TurnosAduanaModel.IdUsuario_idxfk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

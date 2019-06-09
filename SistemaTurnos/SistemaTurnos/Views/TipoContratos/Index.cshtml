@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SistemaTurnos.Models.TipoContrato>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDuracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CalidadJuridica.VTipoCalidadJuridica)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDuracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalidadJuridica.VTipoCalidadJuridica)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdTipoContrato }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdTipoContrato }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdTipoContrato })
+        </td>
+    </tr>
+}
+
+</table>

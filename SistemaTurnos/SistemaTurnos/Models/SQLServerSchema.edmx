@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TurnosAduanaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CalidadJuridica">
+          <Key>
+            <PropertyRef Name="IdCalidadJuridica" />
+          </Key>
+          <Property Name="IdCalidadJuridica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VTipoCalidadJuridica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CambioTurno">
+          <Key>
+            <PropertyRef Name="IdCambioTurno" />
+          </Key>
+          <Property Name="IdCambioTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdUsuarioold" Type="int" />
+          <Property Name="IdEstado" Type="int" />
+          <Property Name="VObservaciones" Type="varchar" MaxLength="255" />
+          <Property Name="IdTurnoUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="IdContrato" />
+          </Key>
+          <Property Name="IdContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DFechaInicio" Type="date" />
+          <Property Name="DFechaFin" Type="date" />
+          <Property Name="IdTipoContrato" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VDescripcionEstado" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Lugar">
+          <Key>
+            <PropertyRef Name="IdLugar" />
+          </Key>
+          <Property Name="IdLugar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VDescripcionLugar" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="IdPermisos" />
+          </Key>
+          <Property Name="IdPermisos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DFechaInicio" Type="date" />
+          <Property Name="ICantDias" Type="int" />
+          <Property Name="ICantHoras" Type="int" />
+          <Property Name="DFechaFin" Type="date" />
+          <Property Name="IdTipoPermiso" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VNombreRol" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TipoContrato">
+          <Key>
+            <PropertyRef Name="IdTipoContrato" />
+          </Key>
+          <Property Name="IdTipoContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCalidadJuridica" Type="int" />
+          <Property Name="IDuracion" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoPermiso">
+          <Key>
+            <PropertyRef Name="IdTipoPermiso" />
+          </Key>
+          <Property Name="IdTipoPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VDescripcionPermiso" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="IdTipoUsuario" />
+          </Key>
+          <Property Name="IdTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="20" />
+          <Property Name="Permisos" Type="varchar" MaxLength="20" />
+          <Property Name="IdRol" Type="int" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VNombreTurno" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TurnoUsuario">
+          <Key>
+            <PropertyRef Name="IdTurnoUsuario" />
+          </Key>
+          <Property Name="IdTurnoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DFechaincio" Type="date" />
+          <Property Name="DFechaTermino" Type="date" />
+          <Property Name="IdLugar" Type="int" />
+          <Property Name="IdTurno" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEmail" Type="varchar" MaxLength="50" />
+          <Property Name="VPass" Type="varchar" MaxLength="20" />
+          <Property Name="VRut" Type="varchar" MaxLength="10" />
+          <Property Name="VNombre" Type="char" MaxLength="20" />
+          <Property Name="VApellido" Type="char" MaxLength="20" />
+          <Property Name="IdTipoUsuario" Type="int" />
+        </EntityType>
+        <Association Name="IdCalidadJuridica_idxfk">
+          <End Role="CalidadJuridica" Type="Self.CalidadJuridica" Multiplicity="0..1" />
+          <End Role="TipoContrato" Type="Self.TipoContrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CalidadJuridica">
+              <PropertyRef Name="IdCalidadJuridica" />
+            </Principal>
+            <Dependent Role="TipoContrato">
+              <PropertyRef Name="IdCalidadJuridica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdEstado_idxfk">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdLugar_idxfk">
+          <End Role="Lugar" Type="Self.Lugar" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lugar">
+              <PropertyRef Name="IdLugar" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdLugar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdRol_idxfk">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="TipoUsuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoContrato_idxfk">
+          <End Role="TipoContrato" Type="Self.TipoContrato" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContrato">
+              <PropertyRef Name="IdTipoContrato" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="IdTipoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoPermiso_idxfk">
+          <End Role="TipoPermiso" Type="Self.TipoPermiso" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPermiso">
+              <PropertyRef Name="IdTipoPermiso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdTipoPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoUsuario_idxfk">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="IdTipoUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTurno_idxfk">
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTurnoUsuario_idxfk">
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TurnoUsuario">
+              <PropertyRef Name="IdTurnoUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdTurnoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_2">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuarioold_idxfk">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdUsuarioold" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TurnosAduanaModelStoreContainer">
+          <EntitySet Name="CalidadJuridica" EntityType="Self.CalidadJuridica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CambioTurno" EntityType="Self.CambioTurno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lugar" EntityType="Self.Lugar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TurnoUsuario" EntityType="Self.TurnoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="IdCalidadJuridica_idxfk" Association="Self.IdCalidadJuridica_idxfk">
+            <End Role="CalidadJuridica" EntitySet="CalidadJuridica" />
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdEstado_idxfk" Association="Self.IdEstado_idxfk">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdLugar_idxfk" Association="Self.IdLugar_idxfk">
+            <End Role="Lugar" EntitySet="Lugar" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdRol_idxfk" Association="Self.IdRol_idxfk">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoContrato_idxfk" Association="Self.IdTipoContrato_idxfk">
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoPermiso_idxfk" Association="Self.IdTipoPermiso_idxfk">
+            <End Role="TipoPermiso" EntitySet="TipoPermiso" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoUsuario_idxfk" Association="Self.IdTipoUsuario_idxfk">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTurno_idxfk" Association="Self.IdTurno_idxfk">
+            <End Role="Turnos" EntitySet="Turnos" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTurnoUsuario_idxfk" Association="Self.IdTurnoUsuario_idxfk">
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk" Association="Self.IdUsuario_idxfk">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_1" Association="Self.IdUsuario_idxfk_1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_2" Association="Self.IdUsuario_idxfk_2">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_3" Association="Self.IdUsuario_idxfk_3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuarioold_idxfk" Association="Self.IdUsuarioold_idxfk">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TurnosAduanaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CalidadJuridica">
+          <Key>
+            <PropertyRef Name="IdCalidadJuridica" />
+          </Key>
+          <Property Name="IdCalidadJuridica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VTipoCalidadJuridica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TipoContrato" Relationship="Self.IdCalidadJuridica_idxfk" FromRole="CalidadJuridica" ToRole="TipoContrato" />
+        </EntityType>
+        <EntityType Name="CambioTurno">
+          <Key>
+            <PropertyRef Name="IdCambioTurno" />
+          </Key>
+          <Property Name="IdCambioTurno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdUsuarioold" Type="Int32" />
+          <Property Name="IdEstado" Type="Int32" />
+          <Property Name="VObservaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdTurnoUsuario" Type="Int32" />
+          <NavigationProperty Name="Estado" Relationship="Self.IdEstado_idxfk" FromRole="CambioTurno" ToRole="Estado" />
+          <NavigationProperty Name="TurnoUsuario" Relationship="Self.IdTurnoUsuario_idxfk" FromRole="CambioTurno" ToRole="TurnoUsuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.IdUsuario_idxfk_3" FromRole="CambioTurno" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.IdUsuarioold_idxfk" FromRole="CambioTurno" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="IdContrato" />
+          </Key>
+          <Property Name="IdContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="DFechaFin" Type="DateTime" Precision="0" />
+          <Property Name="IdTipoContrato" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="TipoContrato" Relationship="Self.IdTipoContrato_idxfk" FromRole="Contrato" ToRole="TipoContrato" />
+          <NavigationProperty Name="Usuario" Relationship="Self.IdUsuario_idxfk_1" FromRole="Contrato" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VDescripcionEstado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CambioTurno" Relationship="Self.IdEstado_idxfk" FromRole="Estado" ToRole="CambioTurno" />
+        </EntityType>
+        <EntityType Name="Lugar">
+          <Key>
+            <PropertyRef Name="IdLugar" />
+          </Key>
+          <Property Name="IdLugar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VDescripcionLugar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TurnoUsuario" Relationship="Self.IdLugar_idxfk" FromRole="Lugar" ToRole="TurnoUsuario" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="IdPermisos" />
+          </Key>
+          <Property Name="IdPermisos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="ICantDias" Type="Int32" />
+          <Property Name="ICantHoras" Type="Int32" />
+          <Property Name="DFechaFin" Type="DateTime" Precision="0" />
+          <Property Name="IdTipoPermiso" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="TipoPermiso" Relationship="Self.IdTipoPermiso_idxfk" FromRole="Permisos" ToRole="TipoPermiso" />
+          <NavigationProperty Name="Usuario" Relationship="Self.IdUsuario_idxfk_2" FromRole="Permisos" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VNombreRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.IdRol_idxfk" FromRole="Rol" ToRole="TipoUsuario" />
+        </EntityType>
+        <EntityType Name="TipoContrato">
+          <Key>
+            <PropertyRef Name="IdTipoContrato" />
+          </Key>
+          <Property Name="IdTipoContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCalidadJuridica" Type="Int32" />
+          <Property Name="IDuracion" Type="Int32" />
+          <NavigationProperty Name="CalidadJuridica" Relationship="Self.IdCalidadJuridica_idxfk" FromRole="TipoContrato" ToRole="CalidadJuridica" />
+          <NavigationProperty Name="Contrato" Relationship="Self.IdTipoContrato_idxfk" FromRole="TipoContrato" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="TipoPermiso">
+          <Key>
+            <PropertyRef Name="IdTipoPermiso" />
+          </Key>
+          <Property Name="IdTipoPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VDescripcionPermiso" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permisos" Relationship="Self.IdTipoPermiso_idxfk" FromRole="TipoPermiso" ToRole="Permisos" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="IdTipoUsuario" />
+          </Key>
+          <Property Name="IdTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoUsuario1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Permisos" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" />
+          <NavigationProperty Name="Rol" Relationship="Self.IdRol_idxfk" FromRole="TipoUsuario" ToRole="Rol" />
+          <NavigationProperty Name="Usuario" Relationship="Self.IdTipoUsuario_idxfk" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VNombreTurno" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TurnoUsuario" Relationship="Self.IdTurno_idxfk" FromRole="Turnos" ToRole="TurnoUsuario" />
+        </EntityType>
+        <EntityType Name="TurnoUsuario">
+          <Key>
+            <PropertyRef Name="IdTurnoUsuario" />
+          </Key>
+          <Property Name="IdTurnoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DFechaincio" Type="DateTime" Precision="0" />
+          <Property Name="DFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="IdLugar" Type="Int32" />
+          <Property Name="IdTurno" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="CambioTurno" Relationship="Self.IdTurnoUsuario_idxfk" FromRole="TurnoUsuario" ToRole="CambioTurno" />
+          <NavigationProperty Name="Lugar" Relationship="Self.IdLugar_idxfk" FromRole="TurnoUsuario" ToRole="Lugar" />
+          <NavigationProperty Name="Turnos" Relationship="Self.IdTurno_idxfk" FromRole="TurnoUsuario" ToRole="Turnos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.IdUsuario_idxfk" FromRole="TurnoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VRut" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="VNombre" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="VApellido" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="IdTipoUsuario" Type="Int32" />
+          <NavigationProperty Name="CambioTurno" Relationship="Self.IdUsuario_idxfk_3" FromRole="Usuario" ToRole="CambioTurno" />
+          <NavigationProperty Name="CambioTurno1" Relationship="Self.IdUsuarioold_idxfk" FromRole="Usuario" ToRole="CambioTurno" />
+          <NavigationProperty Name="Contrato" Relationship="Self.IdUsuario_idxfk_1" FromRole="Usuario" ToRole="Contrato" />
+          <NavigationProperty Name="Permisos" Relationship="Self.IdUsuario_idxfk_2" FromRole="Usuario" ToRole="Permisos" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.IdTipoUsuario_idxfk" FromRole="Usuario" ToRole="TipoUsuario" />
+          <NavigationProperty Name="TurnoUsuario" Relationship="Self.IdUsuario_idxfk" FromRole="Usuario" ToRole="TurnoUsuario" />
+        </EntityType>
+        <Association Name="IdCalidadJuridica_idxfk">
+          <End Role="CalidadJuridica" Type="Self.CalidadJuridica" Multiplicity="0..1" />
+          <End Role="TipoContrato" Type="Self.TipoContrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CalidadJuridica">
+              <PropertyRef Name="IdCalidadJuridica" />
+            </Principal>
+            <Dependent Role="TipoContrato">
+              <PropertyRef Name="IdCalidadJuridica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdEstado_idxfk">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTurnoUsuario_idxfk">
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TurnoUsuario">
+              <PropertyRef Name="IdTurnoUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdTurnoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuarioold_idxfk">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CambioTurno" Type="Self.CambioTurno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CambioTurno">
+              <PropertyRef Name="IdUsuarioold" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoContrato_idxfk">
+          <End Role="TipoContrato" Type="Self.TipoContrato" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContrato">
+              <PropertyRef Name="IdTipoContrato" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="IdTipoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdLugar_idxfk">
+          <End Role="Lugar" Type="Self.Lugar" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lugar">
+              <PropertyRef Name="IdLugar" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdLugar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoPermiso_idxfk">
+          <End Role="TipoPermiso" Type="Self.TipoPermiso" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPermiso">
+              <PropertyRef Name="IdTipoPermiso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdTipoPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk_2">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdRol_idxfk">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="TipoUsuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTipoUsuario_idxfk">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="IdTipoUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdTurno_idxfk">
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdUsuario_idxfk">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="TurnoUsuario" Type="Self.TurnoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="TurnoUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TurnosAduanaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CalidadJuridica" EntityType="Self.CalidadJuridica" />
+          <EntitySet Name="CambioTurno" EntityType="Self.CambioTurno" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Lugar" EntityType="Self.Lugar" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" />
+          <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" />
+          <EntitySet Name="TurnoUsuario" EntityType="Self.TurnoUsuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="IdCalidadJuridica_idxfk" Association="Self.IdCalidadJuridica_idxfk">
+            <End Role="CalidadJuridica" EntitySet="CalidadJuridica" />
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdEstado_idxfk" Association="Self.IdEstado_idxfk">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdTurnoUsuario_idxfk" Association="Self.IdTurnoUsuario_idxfk">
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_3" Association="Self.IdUsuario_idxfk_3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuarioold_idxfk" Association="Self.IdUsuarioold_idxfk">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CambioTurno" EntitySet="CambioTurno" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoContrato_idxfk" Association="Self.IdTipoContrato_idxfk">
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_1" Association="Self.IdUsuario_idxfk_1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="IdLugar_idxfk" Association="Self.IdLugar_idxfk">
+            <End Role="Lugar" EntitySet="Lugar" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoPermiso_idxfk" Association="Self.IdTipoPermiso_idxfk">
+            <End Role="TipoPermiso" EntitySet="TipoPermiso" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk_2" Association="Self.IdUsuario_idxfk_2">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="IdRol_idxfk" Association="Self.IdRol_idxfk">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTipoUsuario_idxfk" Association="Self.IdTipoUsuario_idxfk">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdTurno_idxfk" Association="Self.IdTurno_idxfk">
+            <End Role="Turnos" EntitySet="Turnos" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="IdUsuario_idxfk" Association="Self.IdUsuario_idxfk">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="TurnoUsuario" EntitySet="TurnoUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TurnosAduanaModelStoreContainer" CdmEntityContainer="TurnosAduanaEntities">
+          <EntitySetMapping Name="CalidadJuridica">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.CalidadJuridica">
+              <MappingFragment StoreEntitySet="CalidadJuridica">
+                <ScalarProperty Name="IdCalidadJuridica" ColumnName="IdCalidadJuridica" />
+                <ScalarProperty Name="VTipoCalidadJuridica" ColumnName="VTipoCalidadJuridica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CambioTurno">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.CambioTurno">
+              <MappingFragment StoreEntitySet="CambioTurno">
+                <ScalarProperty Name="IdCambioTurno" ColumnName="IdCambioTurno" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdUsuarioold" ColumnName="IdUsuarioold" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="VObservaciones" ColumnName="VObservaciones" />
+                <ScalarProperty Name="IdTurnoUsuario" ColumnName="IdTurnoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contrato">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Contrato">
+              <MappingFragment StoreEntitySet="Contrato">
+                <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
+                <ScalarProperty Name="DFechaInicio" ColumnName="DFechaInicio" />
+                <ScalarProperty Name="DFechaFin" ColumnName="DFechaFin" />
+                <ScalarProperty Name="IdTipoContrato" ColumnName="IdTipoContrato" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="VDescripcionEstado" ColumnName="VDescripcionEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lugar">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Lugar">
+              <MappingFragment StoreEntitySet="Lugar">
+                <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+                <ScalarProperty Name="VDescripcionLugar" ColumnName="VDescripcionLugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="IdPermisos" ColumnName="IdPermisos" />
+                <ScalarProperty Name="DFechaInicio" ColumnName="DFechaInicio" />
+                <ScalarProperty Name="ICantDias" ColumnName="ICantDias" />
+                <ScalarProperty Name="ICantHoras" ColumnName="ICantHoras" />
+                <ScalarProperty Name="DFechaFin" ColumnName="DFechaFin" />
+                <ScalarProperty Name="IdTipoPermiso" ColumnName="IdTipoPermiso" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="VNombreRol" ColumnName="VNombreRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoContrato">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.TipoContrato">
+              <MappingFragment StoreEntitySet="TipoContrato">
+                <ScalarProperty Name="IdTipoContrato" ColumnName="IdTipoContrato" />
+                <ScalarProperty Name="IdCalidadJuridica" ColumnName="IdCalidadJuridica" />
+                <ScalarProperty Name="IDuracion" ColumnName="IDuracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPermiso">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.TipoPermiso">
+              <MappingFragment StoreEntitySet="TipoPermiso">
+                <ScalarProperty Name="IdTipoPermiso" ColumnName="IdTipoPermiso" />
+                <ScalarProperty Name="VDescripcionPermiso" ColumnName="VDescripcionPermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
+                <ScalarProperty Name="TipoUsuario1" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="Permisos" ColumnName="Permisos" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnos">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Turnos">
+              <MappingFragment StoreEntitySet="Turnos">
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="VNombreTurno" ColumnName="VNombreTurno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TurnoUsuario">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.TurnoUsuario">
+              <MappingFragment StoreEntitySet="TurnoUsuario">
+                <ScalarProperty Name="IdTurnoUsuario" ColumnName="IdTurnoUsuario" />
+                <ScalarProperty Name="DFechaincio" ColumnName="DFechaincio" />
+                <ScalarProperty Name="DFechaTermino" ColumnName="DFechaTermino" />
+                <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="TurnosAduanaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="VEmail" ColumnName="VEmail" />
+                <ScalarProperty Name="VPass" ColumnName="VPass" />
+                <ScalarProperty Name="VRut" ColumnName="VRut" />
+                <ScalarProperty Name="VNombre" ColumnName="VNombre" />
+                <ScalarProperty Name="VApellido" ColumnName="VApellido" />
+                <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

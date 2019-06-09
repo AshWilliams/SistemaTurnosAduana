@@ -1,0 +1,66 @@
+﻿@model SistemaTurnos.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VRut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VRut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoUsuario.TipoUsuario1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoUsuario.TipoUsuario1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SistemaTurnos.Models.Permisos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DFechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ICantDias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ICantHoras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DFechaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPermiso.VDescripcionPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.VEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DFechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ICantDias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ICantHoras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DFechaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPermiso.VDescripcionPermiso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.VEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdPermisos }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdPermisos }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdPermisos })
+        </td>
+    </tr>
+}
+
+</table>

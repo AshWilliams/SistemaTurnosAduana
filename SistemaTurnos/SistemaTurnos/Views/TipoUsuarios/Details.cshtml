@@ -1,0 +1,42 @@
+﻿@model SistemaTurnos.Models.TipoUsuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoUsuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoUsuario1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoUsuario1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permisos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permisos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rol.VNombreRol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rol.VNombreRol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTipoUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model SistemaTurnos.Models.Permisos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permisos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DFechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DFechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ICantDias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ICantDias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ICantHoras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ICantHoras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DFechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DFechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPermiso.VDescripcionPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPermiso.VDescripcionPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.VEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.VEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPermisos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

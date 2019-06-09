@@ -1,0 +1,26 @@
+﻿@model SistemaTurnos.Models.CalidadJuridica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CalidadJuridica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VTipoCalidadJuridica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VTipoCalidadJuridica)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCalidadJuridica }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

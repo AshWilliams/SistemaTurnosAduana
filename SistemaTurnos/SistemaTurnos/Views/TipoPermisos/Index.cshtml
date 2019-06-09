@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SistemaTurnos.Models.TipoPermiso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VDescripcionPermiso)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VDescripcionPermiso)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdTipoPermiso }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdTipoPermiso }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdTipoPermiso })
+        </td>
+    </tr>
+}
+
+</table>

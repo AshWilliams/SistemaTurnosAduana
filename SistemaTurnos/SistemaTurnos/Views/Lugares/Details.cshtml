@@ -1,0 +1,26 @@
+﻿@model SistemaTurnos.Models.Lugar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lugar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VDescripcionLugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VDescripcionLugar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLugar }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

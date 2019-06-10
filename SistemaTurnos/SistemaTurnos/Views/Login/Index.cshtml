@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Turnos Aduana</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .col-centered {
+            float: none;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/alertas")
+@Styles.Render("~/Content/alertas")
+<body style="background-color: #4b5257">
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-centered">
+            <div class="jumbotron">
+                <h3>Ingreso Usuarios </h3>
+                <h4>(defecto: admin y admin)</h4>
+                <form action="Dashboard.jsp">
+                    <div class="form-group">
+                        <input type="text" id="iptUsuario" class="form-control" placeholder="Ingrese Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="iptPassword" class="form-control" placeholder="Ingrese Password">
+                    </div>
+                    <div class="custom-checkbox">
+                        <label><input type="checkbox"> Recordarme</label>
+                    </div>
+                    <button type="submit" id="btnSubmit" class="btn-primary form-control">Login</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function (e) {
+                e.preventDefault();
+                let usuario = $("#iptUsuario").val();
+                let password = $("#iptUsuario").val();
+                let token = $('input[name="__RequestVerificationToken"]').val();
+                var payload = {
+                    usuario: usuario,
+                    password: password,
+                    __RequestVerificationToken: token
+                }
+                $.ajax({
+                    url: "Login/Login",
+                    method: "POST",
+                    data: payload
+                }).done(function (response) {
+                    if (response.mensaje === "true") {
+                        window.location.replace("/Home/");
+                    }
+                    else {
+                        alertify.alert('Usuario o Contraseña incorrectas!');
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
